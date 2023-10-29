@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>What Do You Know?</title>
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="module" src="script.js"></script>
+
+
+  <template id="quiz">
+    <!-- this slot is simply to hide elements -->
+    <slot hidden></slot>
+    <form>
+      <slot></slot>
+    </form>
+
+    <button id="next">Next</button>
+  </template>
+</head>
+<body>
+  <main>
+    <quiz->
+      <span>question 1</span><span>question 2</span><span>question 3</span><span>question 4</span><span>question 5</span>
+    </quiz->
+  </main>
+</body>
+</html>
