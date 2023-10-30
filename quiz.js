@@ -13,7 +13,9 @@ export default class Quiz extends HTMLElement {
   #hidden
   #shown;
 
+  #progress
   #next;
+  #previous;
 
 
   constructor() {
@@ -33,8 +35,14 @@ export default class Quiz extends HTMLElement {
     this.#hidden = /** @type {HTMLSlotElement} */ (shadow.querySelector("slot[hidden]"));
 
 
+    this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("progress"));
+    this.#progress.max = this.childElementCount;
+
     this.#next = /** @type {HTMLButtonElement} */ (shadow.querySelector("#next"));
     this.#next.addEventListener("click", () => {this.viewing++;});
+
+    this.#previous = /** @type {HTMLButtonElement} */ (shadow.querySelector("#previous"));
+    this.#previous.addEventListener("click", () => {this.viewing--;});
 
     this.viewing = 0;
   }
@@ -58,9 +66,10 @@ export default class Quiz extends HTMLElement {
     this.#shown.assign(/** @type {Element} */ (this.children.item(child)));
 
 
-    if (child === this.childElementCount - 1) {
-      this.#next.disabled = true;
-    }
+    this.#next.disabled = child === this.childElementCount - 1;
+    this.#previous.disabled = child === 0;
+
+    this.#progress.value = child + 1;
   }
 
 
