@@ -14,21 +14,41 @@
 
 
   <template id="quiz">
-    <!-- this slot is simply to hide elements -->
-    <slot hidden></slot>
-    <form>
-      <slot></slot>
-    </form>
+    <slot></slot>
 
-    <button id="previous">Previous</button>
-    <progress value="1"></progress>
-    <button id="next">Next</button>
+
+    <div>
+      <button id="previous">Previous</button>
+      <progress value="0"></progress>
+      <button id="next">Next</button>
+    </div>
+
+    <button>Done</button>
   </template>
 </head>
 <body>
   <main>
     <quiz->
-      <span>question 1</span><span>question 2</span><span>question 3</span><span>question 4</span><span>question 5</span>
+    <form>
+      <h2>Question 1</h2>
+      <input type="text" required>
+    </form>
+    <form>
+      <h2>Question 2</h2>
+      <input type="text" required>
+    </form>
+    <form>
+      <h2>Question 3</h2>
+      <input type="text" required>
+    </form>
+    <form>
+      <h2>Question 4</h2>
+      <input type="text" required>
+    </form>
+    <form>
+      <h2>Question 5</h2>
+      <input type="text" required>
+    </form>
     </quiz->
   </main>
 </body>

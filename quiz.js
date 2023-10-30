@@ -8,10 +8,7 @@ export default class Quiz extends HTMLElement {
   static template = /** @type {HTMLTemplateElement} */ (document.querySelector("template#quiz"));
 
 
-  #form;
-
-  #hidden
-  #shown;
+  #showing;
 
   #progress
   #next;
@@ -25,14 +22,10 @@ export default class Quiz extends HTMLElement {
     const shadow = this.attachShadow({mode: "closed", slotAssignment: "manual"});
     shadow.appendChild(Quiz.template.content.cloneNode(true));
 
-    this.#form = /** @type {HTMLFormElement} */ (shadow.querySelector("form"));
-    this.#form.addEventListener("submit", event => {
-      event.preventDefault();
-    });
 
+    this.#showing = /** @type {HTMLSlotElement} */ (shadow.querySelector("slot"));
 
-    this.#shown = /** @type {HTMLSlotElement} */ (shadow.querySelector("slot:not([hidden])"));
-    this.#hidden = /** @type {HTMLSlotElement} */ (shadow.querySelector("slot[hidden]"));
+    for (const form of this.querySelectorAll("form")) form.addEventListener("submit", prevent);
 
 
     this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("progress"));
@@ -49,31 +42,39 @@ export default class Quiz extends HTMLElement {
 
 
   get viewing() {
-    const viewingElement = this.#shown.assignedElements()[0];
+    const viewingElement = this.#showing.assignedElements()[0];
 
 
-    return [...this.children].findIndex(element => element === viewingElement);
+    return [...this.querySelectorAll("form")].findIndex(element => element === viewingElement);
   }
-  set viewing(child) {
-    if (child < 0 || child >= this.childElementCount)
-      throw new RangeError(`quiz does not have an element ${child}.`);
+  set viewing(form) {
+    const forms = this.querySelectorAll("form");
 
 
-    for (const element of this.#shown.assignedElements()) {
-      this.#hidden.assign(element);
-    }
-
-    this.#shown.assign(/** @type {Element} */ (this.children.item(child)));
+    if (form < 0 || form >= forms.length)
+      throw new RangeError(`quiz does not have an element ${form}.`);
 
 
-    this.#next.disabled = child === this.childElementCount - 1;
-    this.#previous.disabled = child === 0;
+    this.#showing.assign(forms[form]);
 
-    this.#progress.value = child + 1;
+
+    this.#next.disabled = form === forms.length - 1;
+    this.#previous.disabled = form === 0;
+
+    this.#progress.value = form;
   }
 
 
   static {
     customElements.define("quiz-", this)
   }
+}
+
+
+/**
+ * an event listener that calls event.preventDefaut()
+ * @param {Event} event 
+ */
+function prevent(event) {
+  event.preventDefault();
 }
