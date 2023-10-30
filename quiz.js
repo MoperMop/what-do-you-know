@@ -62,4 +62,9 @@ export default class Quiz extends HTMLElement {
       this.#next.disabled = true;
     }
   }
+
+
+  static {
+    customElements.define("quiz-", this)
+  }
 }
