@@ -14,6 +14,8 @@ export default class Quiz extends HTMLElement {
   #next;
   #previous;
 
+  #submit;
+
 
   constructor() {
     super();
@@ -38,6 +40,9 @@ export default class Quiz extends HTMLElement {
     this.#previous.addEventListener("click", () => {this.viewing--;});
 
     this.viewing = 0;
+
+
+    this.#submit = /** @type {HTMLButtonElement} */ (shadow.querySelector("#submit"));
   }
 
 
@@ -45,23 +50,28 @@ export default class Quiz extends HTMLElement {
     const viewingElement = this.#showing.assignedElements()[0];
 
 
-    return [...this.querySelectorAll("form")].findIndex(element => element === viewingElement);
+    return [...this.questions].findIndex(element => element === viewingElement);
   }
-  set viewing(form) {
-    const forms = this.querySelectorAll("form");
+  set viewing(question) {
+    const questions = this.questions;
 
 
-    if (form < 0 || form >= forms.length)
-      throw new RangeError(`quiz does not have an element ${form}.`);
+    if (question < 0 || question >= questions.length)
+      throw new RangeError(`quiz does not have an element ${question}.`);
 
 
-    this.#showing.assign(forms[form]);
+    this.#showing.assign(questions[question]);
 
 
-    this.#next.disabled = form === forms.length - 1;
-    this.#previous.disabled = form === 0;
+    this.#next.disabled = question === questions.length - 1;
+    this.#previous.disabled = question === 0;
 
-    this.#progress.value = form;
+    this.#progress.value = question;
+  }
+
+
+  get questions() {
+    return this.querySelectorAll("form");
   }
 
 
