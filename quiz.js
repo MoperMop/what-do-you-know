@@ -21,7 +21,7 @@ export default class Quiz extends HTMLElement {
     super();
 
 
-    const shadow = this.attachShadow({mode: "closed", slotAssignment: "manual"});
+    const shadow = this.attachShadow({ mode: "closed", slotAssignment: "manual" });
     shadow.appendChild(Quiz.template.content.cloneNode(true));
 
 
@@ -34,10 +34,10 @@ export default class Quiz extends HTMLElement {
     this.#progress.max = this.childElementCount;
 
     this.#next = /** @type {HTMLButtonElement} */ (shadow.querySelector("#next"));
-    this.#next.addEventListener("click", () => {this.viewing++;});
+    this.#next.addEventListener("click", () => { this.viewing++; });
 
     this.#previous = /** @type {HTMLButtonElement} */ (shadow.querySelector("#previous"));
-    this.#previous.addEventListener("click", () => {this.viewing--;});
+    this.#previous.addEventListener("click", () => { this.viewing--; });
 
     this.viewing = 0;
 
@@ -47,8 +47,8 @@ export default class Quiz extends HTMLElement {
       const questions = this.questions;
       for (let index = 0; index < questions.length; index++) {
         const question = questions[index];
-        
-        
+
+
         if (question.checkValidity()) continue;
 
         this.viewing = index;

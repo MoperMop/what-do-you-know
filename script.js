@@ -1,2 +1,2 @@
 //@ts-check
-import {} from "./quiz.js";
+import { } from "./quiz.js";
