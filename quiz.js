@@ -43,6 +43,20 @@ export default class Quiz extends HTMLElement {
 
 
     this.#submit = /** @type {HTMLButtonElement} */ (shadow.querySelector("#submit"));
+    this.#submit.addEventListener("click", () => {
+      const questions = this.questions;
+      for (let index = 0; index < questions.length; index++) {
+        const question = questions[index];
+        
+        
+        if (question.checkValidity()) continue;
+
+        this.viewing = index;
+        question.reportValidity();
+
+        return;
+      }
+    });
   }
 
 
