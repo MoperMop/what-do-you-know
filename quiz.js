@@ -15,6 +15,8 @@ export default class Quiz extends HTMLElement {
   #previous;
 
   #submit;
+  #prompt;
+  #promptSlot;
 
 
   constructor() {
@@ -31,7 +33,7 @@ export default class Quiz extends HTMLElement {
 
 
     this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("progress"));
-    this.#progress.max = this.childElementCount;
+    this.#progress.max = this.questions.length;
 
     this.#next = /** @type {HTMLButtonElement} */ (shadow.querySelector("#next"));
     this.#next.addEventListener("click", () => { this.viewing++; });
@@ -57,6 +59,10 @@ export default class Quiz extends HTMLElement {
         return;
       }
     });
+
+
+    this.#prompt = /** @type {HTMLDialogElement} */ (shadow.querySelector("dialog"));
+    this.#promptSlot = /** @type {HTMLSlotElement} */ (this.#prompt.querySelector("slot"));
   }
 
 
@@ -64,7 +70,7 @@ export default class Quiz extends HTMLElement {
     const viewingElement = this.#showing.assignedElements()[0];
 
 
-    return [...this.questions].findIndex(element => element === viewingElement);
+    return this.questions.findIndex(element => element === viewingElement);
   }
   set viewing(question) {
     const questions = this.questions;
@@ -84,8 +90,14 @@ export default class Quiz extends HTMLElement {
   }
 
 
+  show() {}
+
+
   get questions() {
-    return this.querySelectorAll("form");
+    return /** @type {HTMLFormElement[]} */ ([...this.children].filter((child) => child instanceof HTMLFormElement));
+  }
+  get prompts() {
+    return /** @type {HTMLDivElement[]} */ ([...this.children].filter((child) => child instanceof HTMLDivElement));
   }
 
 
