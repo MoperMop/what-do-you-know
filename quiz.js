@@ -17,6 +17,7 @@ export default class Quiz extends HTMLElement {
   #submit;
   #prompt;
   #promptSlot;
+  #promptsCompleted;
 
 
   constructor() {
@@ -58,11 +59,19 @@ export default class Quiz extends HTMLElement {
 
         return;
       }
+
+
+      this.showPrompt();
+      this.#promptsCompleted++;
     });
 
 
     this.#prompt = /** @type {HTMLDialogElement} */ (shadow.querySelector("dialog"));
     this.#promptSlot = /** @type {HTMLSlotElement} */ (this.#prompt.querySelector("slot"));
+
+    this.#promptsCompleted = 0;
+
+    shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => {this.closePrompt();});
   }
 
 
@@ -89,15 +98,36 @@ export default class Quiz extends HTMLElement {
     this.#progress.value = question;
   }
 
+  /**
+    * show the most applicable prompt
+    */
+  showPrompt() {
+    const prompts = this.prompts;
 
-  show() {}
+
+    if (this.#promptsCompleted >= prompts.length) this.#promptSlot.assign();
+    else this.#promptSlot.assign(prompts[this.#promptsCompleted]);
+
+
+    this.#prompt.showModal();
+  }
+  /**
+    * close the prompt opened with {@linkcode showPrompt}
+    */
+  closePrompt() {
+    this.#prompt.close();
+  }
 
 
   get questions() {
-    return /** @type {HTMLFormElement[]} */ ([...this.children].filter((child) => child instanceof HTMLFormElement));
+    return /** @type {HTMLFormElement[]} */ (
+      [...this.children].filter((child) => child instanceof HTMLFormElement)
+    );
   }
   get prompts() {
-    return /** @type {HTMLDivElement[]} */ ([...this.children].filter((child) => child instanceof HTMLDivElement));
+    return /** @type {HTMLDivElement[]} */ (
+      [...this.children].filter((child) => child instanceof HTMLDivElement)
+    );
   }
 
 
