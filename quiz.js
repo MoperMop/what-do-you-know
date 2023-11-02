@@ -15,6 +15,7 @@ export default class Quiz extends HTMLElement {
   #previous;
 
   #submit;
+  #finish;
   #prompt;
   #promptSlot;
   #currentPrompt;
@@ -70,7 +71,10 @@ export default class Quiz extends HTMLElement {
 
     this.#currentPrompt = -1;
 
-    shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => {this.closePrompt();});
+    shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => { this.closePrompt(); });
+    shadow.querySelector("#finish")?.addEventListener?.("click", () => {
+      this.dispatchEvent(new CustomEvent("finish", { detail: this.#currentPrompt }));
+    });
   }
 
 

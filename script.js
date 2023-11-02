@@ -10,3 +10,9 @@ begin.addEventListener("click", () => {
   quiz.hidden = false;
   instructions.hidden = true;
 });
+
+const end = /** @type {HTMLElement} */ (document.querySelector("#end"));
+quiz.addEventListener("finish", () => {
+  quiz.hidden = true;
+  end.hidden = false;
+});
