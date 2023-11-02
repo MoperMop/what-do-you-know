@@ -17,7 +17,7 @@ export default class Quiz extends HTMLElement {
   #submit;
   #prompt;
   #promptSlot;
-  #promptsCompleted;
+  #currentPrompt;
 
 
   constructor() {
@@ -62,14 +62,13 @@ export default class Quiz extends HTMLElement {
 
 
       this.showPrompt();
-      this.#promptsCompleted++;
     });
 
 
     this.#prompt = /** @type {HTMLDialogElement} */ (shadow.querySelector("dialog"));
     this.#promptSlot = /** @type {HTMLSlotElement} */ (this.#prompt.querySelector("slot"));
 
-    this.#promptsCompleted = 0;
+    this.#currentPrompt = -1;
 
     shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => {this.closePrompt();});
   }
@@ -96,6 +95,9 @@ export default class Quiz extends HTMLElement {
     this.#previous.disabled = question === 0;
 
     this.#progress.value = question;
+
+
+    questions[question].dataset.viewed = "";
   }
 
   /**
@@ -105,8 +107,20 @@ export default class Quiz extends HTMLElement {
     const prompts = this.prompts;
 
 
-    if (this.#promptsCompleted >= prompts.length) this.#promptSlot.assign();
-    else this.#promptSlot.assign(prompts[this.#promptsCompleted]);
+    if (this.questions.every(question => "viewed" in question.dataset)) {
+      this.#currentPrompt++;
+
+
+      this.questions.forEach((question, index) => {
+        if (index === this.viewing) return;
+
+        delete question.dataset.viewed;
+      });
+    }
+
+
+    if (this.#currentPrompt in prompts) this.#promptSlot.assign(prompts[this.#currentPrompt]);
+    else this.#promptSlot.assign();
 
 
     this.#prompt.showModal();
@@ -114,9 +128,7 @@ export default class Quiz extends HTMLElement {
   /**
     * close the prompt opened with {@linkcode showPrompt}
     */
-  closePrompt() {
-    this.#prompt.close();
-  }
+  closePrompt() { this.#prompt.close(); }
 
 
   get questions() {
