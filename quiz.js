@@ -15,10 +15,14 @@ export default class Quiz extends HTMLElement {
   #previous;
 
   #submit;
-  #finish;
   #prompt;
   #promptSlot;
   #currentPrompt;
+
+  #timer;
+  #timeRemaining;
+  /** @type {number | undefined} */
+  #timerInterval;
 
 
   constructor() {
@@ -72,9 +76,38 @@ export default class Quiz extends HTMLElement {
     this.#currentPrompt = -1;
 
     shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => { this.closePrompt(); });
-    shadow.querySelector("#finish")?.addEventListener?.("click", () => {
-      this.dispatchEvent(new CustomEvent("finish", { detail: this.#currentPrompt }));
+    shadow.querySelector("#finish")?.addEventListener?.("click", () => { this.finish(); });
+  
+
+    this.#timer = /** @type {HTMLProgressElement} */ (shadow.querySelector("#timer"));
+    this.#timeRemaining = /** @type {HTMLOutputElement} */ (shadow.querySelector("#time-remaining"));
+    
+    this.#timer.value = this.#timer.max = Number(this.getAttribute("time")) || 60;
+  }
+
+
+  /**
+   * start the timer, which when completed will end the quiz
+   */
+  beginTimer() {
+    const currentTime = Date.now();
+
+
+    this.#timerInterval = setInterval(() => {
+      const remainingSeconds = this.#timer.max - Math.floor((Date.now() - currentTime) / 1000);
+      this.#timer.value = Math.floor(remainingSeconds);
+      this.#timeRemaining.textContent = `Time Remaining: ${remainingSeconds} seconds`;
+      
+
+      if (remainingSeconds <= 0) { this.finish(); }
     });
+  }
+  /**
+   * stop the timer begun with {@linkcode beginTimer}
+   */
+  stopTimer() {
+    clearInterval(this.#timerInterval);
+    this.#timerInterval = undefined;
   }
 
 
@@ -133,6 +166,24 @@ export default class Quiz extends HTMLElement {
     * close the prompt opened with {@linkcode showPrompt}
     */
   closePrompt() { this.#prompt.close(); }
+
+  /**
+   * finish the quiz
+   */
+  finish() {
+    const finishEvent = new CustomEvent("finish", {
+      detail: {
+        currentPrompt: this.#currentPrompt,
+        timeRemaining: this.#timer.value,
+      }
+    })
+    this.dispatchEvent(finishEvent);
+    
+
+    if (finishEvent.defaultPrevented) return;
+    this.stopTimer();
+    this.#prompt.close();
+  }
 
 
   get questions() {

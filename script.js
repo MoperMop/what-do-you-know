@@ -9,6 +9,9 @@ const begin = /** @type {HTMLButtonElement} */ (document.querySelector("#begin")
 begin.addEventListener("click", () => {
   quiz.hidden = false;
   instructions.hidden = true;
+
+
+  quiz.beginTimer();
 });
 
 const end = /** @type {HTMLElement} */ (document.querySelector("#end"));

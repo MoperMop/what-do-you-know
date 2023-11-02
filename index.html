@@ -15,6 +15,13 @@
 
 
   <template id="quiz">
+    <link rel="stylesheet" href="quiz.css">
+
+
+    <output id="time-remaining" for="timer">Time Remaining:</output>
+    <progress id="timer" value="0"></progress>
+
+
     <slot></slot>
 
 
@@ -49,7 +56,7 @@
     </section>
 
 
-    <quiz- hidden>
+    <quiz- hidden time="10">
       <form>
         <h2>Question 1</h2>
 
