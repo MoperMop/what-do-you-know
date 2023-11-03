@@ -24,6 +24,9 @@ export default class Quiz extends HTMLElement {
   /** @type {number | undefined} */
   #timerInterval;
 
+  /** @type {WeakMap<HTMLFormElement, undefined>} */
+  #viewed;
+
 
   constructor() {
     super();
@@ -36,6 +39,9 @@ export default class Quiz extends HTMLElement {
     this.#showing = /** @type {HTMLSlotElement} */ (shadow.querySelector("slot"));
 
     for (const form of this.querySelectorAll("form")) form.addEventListener("submit", prevent);
+
+
+    this.#viewed = new WeakMap();
 
 
     this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("#question-progress"));
@@ -134,7 +140,7 @@ export default class Quiz extends HTMLElement {
     this.#progress.value = question;
 
 
-    questions[question].dataset.viewed = "";
+    this.#viewed.set(questions[question], undefined)
   }
 
   /**
@@ -144,14 +150,14 @@ export default class Quiz extends HTMLElement {
     const prompts = this.prompts;
 
 
-    if (this.questions.every(question => "viewed" in question.dataset)) {
+    if (this.questions.every(question => this.#viewed.has(question))) {
       this.#currentPrompt++;
 
 
       this.questions.forEach((question, index) => {
         if (index === this.viewing) return;
 
-        delete question.dataset.viewed;
+        this.#viewed.delete(question)
       });
     }
 
