@@ -38,7 +38,7 @@ export default class Quiz extends HTMLElement {
     for (const form of this.querySelectorAll("form")) form.addEventListener("submit", prevent);
 
 
-    this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("progress"));
+    this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("#question-progress"));
     this.#progress.max = this.questions.length;
 
     this.#next = /** @type {HTMLButtonElement} */ (shadow.querySelector("#next"));
