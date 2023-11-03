@@ -1,6 +1,8 @@
 :root {
-  --color-1: lightblue;
-  --color-2: #08f;
+  --hue-1: 195deg;
+  --color-1: hsl(var(--hue-1), 100%, 60%);
+  --hue-2: 208deg;
+  --color-2: hsl(var(--hue-2), 100%, 50%);
 }
 
 
@@ -12,9 +14,9 @@ button {
     cursor: pointer;
     
     
-    &:hover { background-color: color-mix(in srgb, var(--color-2) 80%, black 20%); }
+    &:hover { background-color: hsl(var(--hue-2), 100%, 40%); }
   }
   &:disabled {
-    border-color: #777;
+    border-color: #aaa;
   }
 }
