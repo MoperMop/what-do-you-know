@@ -1,0 +1,20 @@
+:root {
+  --color-1: lightblue;
+  --color-2: #08f;
+}
+
+
+button {
+  background-color: var(--color-2);
+
+
+  &:enabled {
+    cursor: pointer;
+    
+    
+    &:hover { background-color: color-mix(in srgb, var(--color-2) 80%, black 20%); }
+  }
+  &:disabled {
+    border-color: #777;
+  }
+}
