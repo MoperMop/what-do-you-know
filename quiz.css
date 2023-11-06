@@ -4,3 +4,18 @@
 #time-remaining {
   display: block;
 }
+
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+
+
+  margin-block: 10px;
+  
+
+  & #question-progress {
+    min-inline-size: 70%;
+    max-inline-size: 80%;
+  }
+}
