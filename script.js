@@ -11,7 +11,7 @@ begin.addEventListener("click", () => {
   instructions.hidden = true;
 
 
-  //quiz.beginTimer();
+  quiz.beginTimer();
 });
 
 const end = /** @type {HTMLElement} */ (document.querySelector("#end"));

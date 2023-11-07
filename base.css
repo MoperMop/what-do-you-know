@@ -23,6 +23,5 @@ button {
 
 
 progress {
-  accent-color: var(--color-1);
-  
+  accent-color: hsl(var(--hue-1), 100%, 35%);
 }
