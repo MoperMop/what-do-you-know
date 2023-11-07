@@ -25,3 +25,8 @@ button {
 progress {
   accent-color: hsl(var(--hue-1), 100%, 35%);
 }
+
+
+p {
+  line-height: 1.5;
+}

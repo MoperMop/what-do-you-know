@@ -10,11 +10,13 @@ main {
 }
 
 
-#instructions {
-  > h2 {
-    border: solid;
-    padding: 5px;
+h2 {
+  border: solid;
+  padding: 5px;
 
-    background-color: var(--color-1);
-  }
+  background-color: var(--color-1);
+}
+form > h2 {
+  border-width: 2px;
+  border-radius: 10px;
 }
