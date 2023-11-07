@@ -20,3 +20,14 @@ form > h2 {
   border-width: 2px;
   border-radius: 10px;
 }
+
+
+#x-value {
+  font-size: 2rem;
+  text-align: center;
+  > math {
+    border: solid;
+    padding: 15px;
+    border-radius: 50%;
+  }
+}

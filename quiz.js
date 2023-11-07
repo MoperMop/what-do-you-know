@@ -17,7 +17,6 @@ export default class Quiz extends HTMLElement {
   #submit;
   #prompt;
   #promptSlot;
-  #currentPrompt;
 
   #timer;
   #timeRemaining;
@@ -79,7 +78,7 @@ export default class Quiz extends HTMLElement {
     this.#prompt = /** @type {HTMLDialogElement} */ (shadow.querySelector("dialog"));
     this.#promptSlot = /** @type {HTMLSlotElement} */ (this.#prompt.querySelector("slot"));
 
-    this.#currentPrompt = -1;
+    this.currentPrompt = -1;
 
     shadow.querySelector("#close-prompt")?.addEventListener?.("click", () => { this.closePrompt(); });
     shadow.querySelector("#finish")?.addEventListener?.("click", () => { this.finish(); });
@@ -151,7 +150,7 @@ export default class Quiz extends HTMLElement {
 
 
     if (this.questions.every(question => this.#viewed.has(question))) {
-      this.#currentPrompt++;
+      this.currentPrompt++;
 
 
       this.questions.forEach((question, index) => {
@@ -162,7 +161,7 @@ export default class Quiz extends HTMLElement {
     }
 
 
-    if (this.#currentPrompt in prompts) this.#promptSlot.assign(prompts[this.#currentPrompt]);
+    if (this.currentPrompt in prompts) this.#promptSlot.assign(prompts[this.currentPrompt]);
     else this.#promptSlot.assign();
 
 
@@ -179,7 +178,7 @@ export default class Quiz extends HTMLElement {
   finish() {
     const finishEvent = new CustomEvent("finish", {
       detail: {
-        currentPrompt: this.#currentPrompt,
+        currentPrompt: this.currentPrompt,
         timeRemaining: this.#timer.value,
       }
     })

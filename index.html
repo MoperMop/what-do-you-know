@@ -49,46 +49,52 @@
   <main>
     <section id="instructions">
       <h2>Instructions</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit consequatur quaerat ipsum quidem, veniam vero vel molestias modi molestiae autem fugit facilis enim. Praesentium, culpa odio laudantium eligendi aliquam animi!</p>
-      <p>Alias, delectus maxime. Incidunt minus aperiam magni, earum deserunt in! Cum quos nemo maxime adipisci incidunt quas illum dolorem dolor voluptatem earum sequi, aut odit, aliquam explicabo exercitationem. Nihil, quos!</p>
-      <p>Quas, provident vero, quam qui nobis omnis doloremque, quia obcaecati numquam vitae veritatis inventore impedit? Quidem illum, eveniet doloremque incidunt maiores sunt, dolor unde magnam sint accusamus assumenda harum adipisci!</p>
+
+      <p>
+        Answer the following questions, given that <math><mi>x</mi><mo>=</mo><mn></mn></math>
+      </p>
 
       <button id="begin">Begin</button>
     </section>
 
 
-    <quiz- hidden time="300">
-      <form>
-        <h2>Question 1</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure expedita et, temporibus sapiente nostrum qui incidunt sunt a laudantium magni, ratione quidem ipsum optio pariatur reiciendis! Obcaecati sit quasi necessitatibus?</p>
-        <input type="text" value="test" required>
-      </form>
-      <form>
-        <h2>Question 2</h2>
-        <p>Minima, repellendus beatae, sint eos, nostrum neque in quibusdam quod asperiores assumenda perferendis fuga magni minus dolores recusandae quia cumque quas! Debitis reiciendis itaque repellat eveniet cupiditate. Reprehenderit, labore ratione.</p>
-        <input type="text" value="test" required>
-      </form>
-      <form>
-        <h2>Question 3</h2>
-        <p>Voluptatum tenetur officiis odio, eligendi rerum assumenda beatae fuga cumque ex, aliquam quam eius! Quae eligendi, corrupti ipsam nobis veniam consectetur possimus quod esse, fugit totam sapiente culpa necessitatibus dignissimos.</p>
-        <input type="text" value="test" required>
-      </form>
-      <form>
-        <h2>Question 4</h2>
-        <p>Enim, debitis incidunt quasi sequi quia reiciendis, fuga quaerat sapiente autem illo sunt exercitationem, architecto eligendi. Iste facere explicabo dolorem quod, dolore sunt corporis tenetur hic qui adipisci amet culpa.</p>
-        <input type="text" value="test" required>
-      </form>
-      <form>
-        <h2>Question 5</h2>
-        <p>Veniam, accusamus voluptates? Molestias omnis consectetur sapiente veniam ut. Perferendis, nam esse quibusdam explicabo voluptate quas iste recusandae officia, labore impedit ad porro iure quam aperiam consequatur dolores voluptas sapiente!</p>
-        <input type="text" value="test" required>
-      </form>
+    <section id="quiz-wrapper" hidden>
+      <div id="x-value">
+        <math><mi>x</mi><mo>=</mo><mn></mn></math>
+      </div>
+      <quiz- time="300">
+        <form>
+          <h2>Question 1</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure expedita et, temporibus sapiente nostrum qui incidunt sunt a laudantium magni, ratione quidem ipsum optio pariatur reiciendis! Obcaecati sit quasi necessitatibus?</p>
+          <input type="text" value="test" required>
+        </form>
+        <form>
+          <h2>Question 2</h2>
+          <p>Minima, repellendus beatae, sint eos, nostrum neque in quibusdam quod asperiores assumenda perferendis fuga magni minus dolores recusandae quia cumque quas! Debitis reiciendis itaque repellat eveniet cupiditate. Reprehenderit, labore ratione.</p>
+          <input type="text" value="test" required>
+        </form>
+        <form>
+          <h2>Question 3</h2>
+          <p>Voluptatum tenetur officiis odio, eligendi rerum assumenda beatae fuga cumque ex, aliquam quam eius! Quae eligendi, corrupti ipsam nobis veniam consectetur possimus quod esse, fugit totam sapiente culpa necessitatibus dignissimos.</p>
+          <input type="text" value="test" required>
+        </form>
+        <form>
+          <h2>Question 4</h2>
+          <p>Enim, debitis incidunt quasi sequi quia reiciendis, fuga quaerat sapiente autem illo sunt exercitationem, architecto eligendi. Iste facere explicabo dolorem quod, dolore sunt corporis tenetur hic qui adipisci amet culpa.</p>
+          <input type="text" value="test" required>
+        </form>
+        <form>
+          <h2>Question 5</h2>
+          <p>Veniam, accusamus voluptates? Molestias omnis consectetur sapiente veniam ut. Perferendis, nam esse quibusdam explicabo voluptate quas iste recusandae officia, labore impedit ad porro iure quam aperiam consequatur dolores voluptas sapiente!</p>
+          <input type="text" value="test" required>
+        </form>
 
 
-      <div>*Prompt 1*</div>
-      <div>*Prompt 2*</div>
-      <div>*Prompt 3*</div>
-    </quiz->
+        <div>*Prompt 1*</div>
+        <div>*Prompt 2*</div>
+        <div>*Prompt 3*</div>
+      </quiz->
+    </section>
 
 
     <section id="end" hidden>
