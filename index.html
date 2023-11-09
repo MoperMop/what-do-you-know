@@ -51,7 +51,7 @@
       <h2>Instructions</h2>
 
       <p>
-        Answer the following questions, given that <math><mi>x</mi><mo>=</mo><mn></mn></math>
+        Answer the following questions, given that <math><mi>x</mi><mo>=</mo><mn>4</mn></math>
       </p>
 
       <button id="begin">Begin</button>
@@ -60,7 +60,7 @@
 
     <section id="quiz-wrapper" hidden>
       <div id="x-value">
-        <math><mi>x</mi><mo>=</mo><mn></mn></math>
+        <math><mi>x</mi><mo>=</mo><mn>4</mn></math>
       </div>
       <quiz- time="300">
         <form>
@@ -71,13 +71,25 @@
         </form>
         <form>
           <h2>Question 2</h2>
-          <p>Minima, repellendus beatae, sint eos, nostrum neque in quibusdam quod asperiores assumenda perferendis fuga magni minus dolores recusandae quia cumque quas! Debitis reiciendis itaque repellat eveniet cupiditate. Reprehenderit, labore ratione.</p>
-          <input type="text" value="test" required>
+          
+          <p>What is <math><mn>3</mn><mi>x</mi></math>?</p>
+          <input type="number" required min="0">
         </form>
         <form>
           <h2>Question 3</h2>
-          <p>Voluptatum tenetur officiis odio, eligendi rerum assumenda beatae fuga cumque ex, aliquam quam eius! Quae eligendi, corrupti ipsam nobis veniam consectetur possimus quod esse, fugit totam sapiente culpa necessitatibus dignissimos.</p>
-          <input type="text" value="test" required>
+          
+          <p>Bob says that <math><mn>3</mn><mo>+</mo><mn>2</mn><mi>x</mi><mo>=</mo><mn>9</mn></math>.</p>
+
+          <fieldset>
+            <legend>Do you agree?</legend>
+            <ul>
+              <li><label><input type="radio" name="agree" required>Yes</label></li>
+              <li><label><input type="radio" name="agree">No</label></li>
+            </ul>
+          </fieldset>
+          
+          <p>Why or why not?</p>
+          <textarea required rows="5"></textarea>
         </form>
         <form>
           <h2>Question 4</h2>

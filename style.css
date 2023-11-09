@@ -33,8 +33,35 @@ form > h2 {
 }
 
 
-input:invalid { background-color: red; }
-@supports selector(:user-invalid) {
-  input:invalid { background-color: revert; }
-  input:user-invalid { background-color: red; }
+input, textarea, fieldset {
+  &:invalid { background-color: red; }
+  @supports selector(:user-invalid) {
+    &:invalid { background-color: revert; }
+    &:user-invalid { background-color: red; }
+  }
+}
+
+fieldset {
+  > legend {
+    border: inherit;
+    border-style: solid;
+    border-radius: 9px;
+    padding: 3px;
+    background-color: var(--color-2);
+  }
+
+  > ul {
+    margin: 0;
+    
+
+    list-style: none;
+
+    padding-inline-start: 0;
+    > li { margin-inline-start: 0; }
+  }
+}
+
+textarea {
+  resize: none;
+  inline-size: 100%;
 }
