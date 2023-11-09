@@ -31,3 +31,10 @@ form > h2 {
     border-radius: 50%;
   }
 }
+
+
+input:invalid { background-color: red; }
+@supports selector(:user-invalid) {
+  input:invalid { background-color: revert; }
+  input:user-invalid { background-color: red; }
+}

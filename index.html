@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="quiz.css">
 
 
-    <output id="time-remaining" for="timer">Time Remaining: ?</output>
+    <label>Time Remaining: <output id="time-remaining" for="timer">?</output></label>
     <progress id="timer" value="0"></progress>
 
 
@@ -65,8 +65,9 @@
       <quiz- time="300">
         <form>
           <h2>Question 1</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure expedita et, temporibus sapiente nostrum qui incidunt sunt a laudantium magni, ratione quidem ipsum optio pariatur reiciendis! Obcaecati sit quasi necessitatibus?</p>
-          <input type="text" value="test" required>
+          
+          <p>What is <math><mi>x</mi><mo>+</mo><mn>3</mn></math>?</p>
+          <input type="number" required min="0">
         </form>
         <form>
           <h2>Question 2</h2>

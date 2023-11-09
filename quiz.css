@@ -1,9 +1,7 @@
 @import url("base.css");
 
 
-#time-remaining {
-  display: block;
-}
+label { display: block; }
 
 
 #controls {

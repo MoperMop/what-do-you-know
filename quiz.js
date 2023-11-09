@@ -101,7 +101,7 @@ export default class Quiz extends HTMLElement {
     this.#timerInterval = setInterval(() => {
       const remainingSeconds = this.#timer.max - Math.floor((Date.now() - currentTime) / 1000);
       this.#timer.value = Math.floor(remainingSeconds);
-      this.#timeRemaining.textContent = `Time Remaining: ${remainingSeconds} seconds`;
+      this.#timeRemaining.textContent = `${remainingSeconds} seconds`;
       
 
       if (remainingSeconds <= 0) { this.finish(); }
