@@ -67,13 +67,13 @@
           <h2>Question 1</h2>
           
           <p>What is <math><mi>x</mi><mo>+</mo><mn>3</mn></math>?</p>
-          <input type="number" required min="0">
+          <input data-pos2="4" type="number" required min="0">
         </form>
         <form>
           <h2>Question 2</h2>
           
           <p>What is <math><mn>3</mn><mi>x</mi></math>?</p>
-          <input type="number" required min="0">
+          <input data-pos2="5" type="number" required min="0">
         </form>
         <form>
           <h2>Question 3</h2>
@@ -93,19 +93,47 @@
         </form>
         <form>
           <h2>Question 4</h2>
-          <p>Enim, debitis incidunt quasi sequi quia reiciendis, fuga quaerat sapiente autem illo sunt exercitationem, architecto eligendi. Iste facere explicabo dolorem quod, dolore sunt corporis tenetur hic qui adipisci amet culpa.</p>
-          <input type="text" value="test" required>
+          
+          <p>What is <math><mi>x</mi><mo>+</mo><mn>3</mn><mo>+</mo><mn>1</mn></math>?</p>
+          <fieldset data-pos2="2">
+            <ul>
+              <li><label><input type="radio" name="m1" required>10</label></li>
+              <li><label><input type="radio" name="m1">8</label></li>
+              <li><label><input type="radio" name="m1">12</label></li>
+              <li><label><input type="radio" name="m1">9</label></li>
+            </ul>
+          </fieldset>
         </form>
         <form>
           <h2>Question 5</h2>
-          <p>Veniam, accusamus voluptates? Molestias omnis consectetur sapiente veniam ut. Perferendis, nam esse quibusdam explicabo voluptate quas iste recusandae officia, labore impedit ad porro iure quam aperiam consequatur dolores voluptas sapiente!</p>
-          <input type="text" value="test" required>
+
+          <p>What is <math><mi>x</mi><mo>+</mo><mn>3</mn><mi>x</mi></math>?</p>
+          <fieldset data-pos2="4">
+            <ul>
+              <li><label><input type="radio" name="m2" required>18</label></li>
+              <li><label><input type="radio" name="m2">9</label></li>
+              <li><label><input type="radio" name="m2">24</label></li>
+              <li><label><input type="radio" name="m2">16</label></li>
+            </ul>
+          </fieldset>
         </form>
 
 
-        <div>*Prompt 1*</div>
-        <div>*Prompt 2*</div>
-        <div>*Prompt 3*</div>
+        <div>
+          <p>We are very sorry, but it appears that we were wrong about what value x is. 
+            Upon further investigation, it turns out that <math><mi>x</mi><mo>=</mo><mn>6</mn></math>.</p>
+          <p>It is recommended that you go back and answer the questions again.</p>
+        </div>
+        <div>
+          <p>We are very sorry, but it appears that we made another mistake.
+            All the times it the quiz when it said 3, it was actually meant to be 2.</p>
+          <p>This mistake has now been rectified, and it is recommend you go back again.</p>
+        </div>
+        <div>
+          <p>We are very sorry, but it appears that we made yet another mistake.
+            It appears that some of the answers to the questions were mixed up.</p>
+          <p>They have now been put back in their proper order, and it is recommended you go back yet again.</p>
+        </div>
       </quiz->
     </section>
 
