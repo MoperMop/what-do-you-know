@@ -24,12 +24,15 @@ form > h2 {
 
 #x-value {
   font-size: 2rem;
-  text-align: center;
-  > math {
-    border: solid;
-    padding: 15px;
-    border-radius: 50%;
-  }
+
+
+  display: block;
+
+  border: solid;
+  border-radius: 50%;
+  margin: auto;
+  padding: 15px;
+  inline-size: fit-content;
 }
 
 
