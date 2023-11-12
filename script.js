@@ -20,3 +20,18 @@ quiz.addEventListener("finish", () => {
   quizWrapper.hidden = true;
   end.hidden = false;
 });
+
+
+
+// @ts-ignore-error
+quiz.addEventListener("showPrompt", 
+  /**
+   * @param {CustomEvent<{currentPrompt: number; newPrompt: boolean;}>} event
+   */
+  event => {
+    if (!event.detail.newPrompt) return;
+    switch (event.detail.currentPrompt) {
+      case 0:
+        /** @type {MathMLElement} */ (document.querySelector("#x-value > mn")).textContent = "6";
+    }
+  });
