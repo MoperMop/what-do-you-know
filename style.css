@@ -68,3 +68,6 @@ textarea {
   resize: none;
   inline-size: 100%;
 }
+
+
+#end > progress { inline-size: 100%; }
