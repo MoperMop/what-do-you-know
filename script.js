@@ -33,5 +33,21 @@ quiz.addEventListener("showPrompt",
     switch (event.detail.currentPrompt) {
       case 0:
         /** @type {MathMLElement} */ (document.querySelector("#x-value > mn")).textContent = "6";
+        break;
+      case 1:
+        const numbers = document.querySelectorAll("mn");
+        for (const number of numbers) {
+          if (number.textContent === "3") number.textContent = "2";
+        }
+        break;
+      case 2:
+        const toMove = /** @type {NodeListOf<HTMLElement>} */ (quiz.querySelectorAll("[data-pos2]"));
+        const questions = quiz.questions;
+
+
+        for (const moving of toMove) {
+          questions[Number(moving.dataset.pos2) - 1].appendChild(moving);
+        }
+        break;
     }
   });

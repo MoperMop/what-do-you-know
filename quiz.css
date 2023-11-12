@@ -20,6 +20,4 @@ label { display: block; }
 }
 
 
-::slotted(form) {
-  min-block-size: 350px;
-}
+::slotted(form) { min-block-size: 350px; }
