@@ -18,3 +18,8 @@ label { display: block; }
     flex: 1;
   }
 }
+
+
+::slotted(form) {
+  min-block-size: 350px;
+}
