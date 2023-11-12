@@ -24,7 +24,7 @@ export default class Quiz extends HTMLElement {
   /** @type {number | undefined} */
   #timerInterval;
 
-  /** @type {WeakMap<HTMLFormElement, undefined>} */
+  /** @type {WeakSet<HTMLFormElement>} */
   #viewed;
 
 
@@ -41,7 +41,7 @@ export default class Quiz extends HTMLElement {
     for (const form of this.querySelectorAll("form")) form.addEventListener("submit", prevent);
 
 
-    this.#viewed = new WeakMap();
+    this.#viewed = new WeakSet();
 
 
     this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("#question-progress"));
@@ -140,7 +140,7 @@ export default class Quiz extends HTMLElement {
     this.#progress.value = question;
 
 
-    this.#viewed.set(questions[question], undefined)
+    this.#viewed.add(questions[question])
   }
 
   /**
