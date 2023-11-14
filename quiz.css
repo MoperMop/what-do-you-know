@@ -25,7 +25,7 @@ label { display: block; }
 
 dialog {
   inline-size: 650px;
-  max-inline-size: 100%;
+  max-inline-size: 100vi;
   > div {
     display: flex;
     justify-content: space-between;
