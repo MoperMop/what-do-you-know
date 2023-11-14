@@ -21,3 +21,13 @@ label { display: block; }
 
 
 ::slotted(form) { min-block-size: 350px; }
+
+
+dialog {
+  inline-size: 650px;
+  max-inline-size: 100%;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
