@@ -45,7 +45,7 @@ export default class Quiz extends HTMLElement {
 
 
     this.#progress = /** @type {HTMLProgressElement} */ (shadow.querySelector("#question-progress"));
-    this.#progress.max = this.questions.length;
+    this.#progress.max = this.questions.length - 1;
 
     this.#next = /** @type {HTMLButtonElement} */ (shadow.querySelector("#next"));
     this.#next.addEventListener("click", () => { this.viewing++; });
