@@ -157,10 +157,11 @@ export default class Quiz extends HTMLElement {
 
 
       this.questions.forEach((question, index) => {
-        if (index === this.viewing) return;
-
         this.#viewed.delete(question)
       });
+
+
+      this.viewing = 0;
 
 
       newPrompt = true;
