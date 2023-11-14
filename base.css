@@ -10,6 +10,9 @@ button {
   background-color: var(--color-2);
 
 
+  font-size: larger;
+
+
   &:enabled {
     cursor: pointer;
     
