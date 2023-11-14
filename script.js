@@ -32,7 +32,7 @@ quiz.addEventListener("showPrompt",
     if (!event.detail.newPrompt) return;
     switch (event.detail.currentPrompt) {
       case 0:
-        /** @type {MathMLElement} */ (document.querySelector("#x-value > mn")).textContent = "6";
+        /** @type {MathMLElement} */ (document.querySelector("#x-value mn")).textContent = "6";
         break;
       case 1:
         const numbers = document.querySelectorAll("mn");
